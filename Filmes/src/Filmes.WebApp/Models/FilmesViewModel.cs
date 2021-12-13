@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Filmes.WebApp.Models
 {
@@ -10,6 +11,11 @@ namespace Filmes.WebApp.Models
         public string Diretor { get; set; }
         public string ImagePath { get; set; }
         public GeneroViewModel Genero { get; set; }
+
+
+
+
+        public IEnumerable<GeneroViewModel> Generos { get; set; }
     }
 }
 

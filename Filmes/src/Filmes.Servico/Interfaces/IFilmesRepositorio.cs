@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Filmes.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -15,5 +16,6 @@ namespace Filmes.Servico.Interfaces
 
 
         Task<int> SaveChanges();
+        Task<IEnumerable<Genero>> ListGeneros();
     }
 }

@@ -30,7 +30,10 @@ namespace Filmes.Servico.Servicos
 
         public async Task Insert(Domain.Models.Filmes filmes)
         {
-            throw new NotImplementedException();
+            //Validar a entidade
+
+            await _filmesRepositorio.Insert(filmes);
+            await _filmesRepositorio.SaveChanges();            
         }
 
         public async Task Remove(Domain.Models.Filmes filmes)
@@ -41,6 +44,11 @@ namespace Filmes.Servico.Servicos
         public async Task Update(Domain.Models.Filmes filmes)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Domain.Models.Genero>> ListGeneros()
+        {
+            return await _filmesRepositorio.ListGeneros();
         }
     }
 }

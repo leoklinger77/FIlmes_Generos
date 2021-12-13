@@ -1,4 +1,5 @@
 ﻿using Filmes.Data.Context;
+using Filmes.Domain.Models;
 using Filmes.Servico.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -48,6 +49,11 @@ namespace Filmes.Data.Repositorio
         public async Task<int> SaveChanges()
         {
             return await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Genero>> ListGeneros()
+        {
+            return await _context.Genero.AsNoTracking().ToListAsync();
         }
     }
 }

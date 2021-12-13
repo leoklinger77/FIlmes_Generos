@@ -2,6 +2,7 @@ using Filmes.Data.Context;
 using Filmes.Data.Repositorio;
 using Filmes.Servico.Interfaces;
 using Filmes.Servico.Servicos;
+using Filmes.WebApp.Configuration;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,6 +44,8 @@ namespace Filmes.WebApp
             services.AddScoped<IFilmesRepositorio, FilmesRepositorio>();
             services.AddScoped<IFilmesServico, FilmesServico>();
             services.AddScoped<FilmeDbContext>();
+            services.AddScoped<SeedConfig>();
+
 
             services.AddAutoMapper(typeof(Startup));
 
@@ -50,10 +53,11 @@ namespace Filmes.WebApp
         }
 
         
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SeedConfig seed)
         {
             if (env.IsDevelopment())
             {
+                seed.Seed();
                 app.UseDeveloperExceptionPage();
             }
             else

@@ -11,5 +11,6 @@ namespace Filmes.Servico.Interfaces
         Task Insert(Domain.Models.Filmes filmes);
         Task Update(Domain.Models.Filmes filmes);
         Task Remove(Domain.Models.Filmes filmes);
+        Task<IEnumerable<Domain.Models.Genero>> ListGeneros();
     }
 }
