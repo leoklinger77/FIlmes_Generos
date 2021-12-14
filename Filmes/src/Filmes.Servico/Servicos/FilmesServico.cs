@@ -8,10 +8,12 @@ namespace Filmes.Servico.Servicos
     public class FilmesServico : IFilmesServico
     {
         private readonly IFilmesRepositorio _filmesRepositorio;
+        private readonly INotificacaoServico _notificacaoServico;
 
-        public FilmesServico(IFilmesRepositorio filmesRepositorio)
+        public FilmesServico(IFilmesRepositorio filmesRepositorio, INotificacaoServico notificacaoServico)
         {
             _filmesRepositorio = filmesRepositorio;
+            _notificacaoServico = notificacaoServico;
         }
 
         public async Task<Domain.Models.Filmes> FindById(Guid Id)
@@ -30,7 +32,11 @@ namespace Filmes.Servico.Servicos
 
         public async Task Insert(Domain.Models.Filmes filmes)
         {
-            //Validar a entidade
+            if(_filmesRepositorio.Find(x => x.Titulo == filmes.Titulo).Result != null)
+            {
+                _notificacaoServico.AddError("O titulo cadastrado já existe.");
+                return;
+            }
 
             await _filmesRepositorio.Insert(filmes);
             await _filmesRepositorio.SaveChanges();            

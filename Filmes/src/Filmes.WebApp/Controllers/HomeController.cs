@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Filmes.Servico.Interfaces;
 using Filmes.WebApp.Configuration;
 using Filmes.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -13,7 +14,8 @@ namespace Filmes.WebApp.Controllers
         private readonly ILogger<HomeController> _logger;
 
 
-        public HomeController(IMapper mapper, ILogger<HomeController> logger) : base(mapper)
+        public HomeController(IMapper mapper, ILogger<HomeController> logger, INotificacaoServico notificacao)
+                                : base(mapper, notificacao)
         {
             _logger = logger;
         }

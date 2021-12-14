@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Filmes.Servico\Filmes.Servico.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\image\" />
+  </ItemGroup>
+
 </Project>

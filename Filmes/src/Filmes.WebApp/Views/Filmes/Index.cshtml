@@ -13,7 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.GeneroId)
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genero.Nome)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Titulo)
@@ -34,7 +37,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.GeneroId)
+                <img src="~/image/@item.ImagePath" class="rounded float-left" width="40" height="40" alt="...">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genero.Nome)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Titulo)

@@ -8,10 +8,13 @@
 
 <h4>Filmes</h4>
 <hr />
+
+<vc:summary></vc:summary>
+
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form asp-action="Create" enctype="multipart/form-data" >
+            
             <div class="form-group">
                 <label asp-for="GeneroId" class="control-label"></label>
                 <select asp-for="GeneroId" class="form-control" asp-items="@(new SelectList(Model.Generos,"Id","Nome"))">
@@ -28,7 +31,14 @@
                 <label asp-for="Diretor" class="control-label"></label>
                 <input asp-for="Diretor" class="form-control" />
                 <span asp-validation-for="Diretor" class="text-danger"></span>
-            </div>            
+            </div>  
+            
+            <div class="form-group">
+                <label asp-for="ImageUpload" class="control-label"></label>
+                <input asp-for="ImageUpload" type="file" class="form-control" />
+                <span asp-validation-for="Diretor" class="text-danger"></span>
+            </div> 
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

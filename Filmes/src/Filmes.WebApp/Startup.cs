@@ -46,10 +46,11 @@ namespace Filmes.WebApp
             services.AddScoped<FilmeDbContext>();
             services.AddScoped<SeedConfig>();
 
-
             services.AddAutoMapper(typeof(Startup));
 
             services.AddDbContext<FilmeDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("minhaconexao_Filmes")));
+
+            services.AddScoped<INotificacaoServico, NotificacaoServico>();
         }
 
         
